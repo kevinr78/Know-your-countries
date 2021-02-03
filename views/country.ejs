@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../public/css/country.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/0000f17b81.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Know Your Countries</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: content-box;
+    }
+    header {
+      display: flex;
+      width: 100%;
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+      background-color: hsl(0, 0%, 94%);
+    }
+    #country-container {
+      min-height: 90vh;
+      width: 100%;
+      background-color: hsl(0, 0%, 94%);
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+    }
+    .country-flag-container {
+      height: 100%;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+    }
+    .country-info-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .country-flag {
+      width: 70%;
+      height: 40%;
+    }
+    .country-sub-information {
+      width: 80%;
+      height: 45%;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      column-gap: 20px;
+      grid-template-rows: 85% 15%;
+    }
+
+    .sub-information-row {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+    }
+    .country-info-container h1 {
+      position: relative;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    #go-back-btn {
+      outline: none;
+      background-color: white;
+      border: none;
+      border-radius: 4px;
+      position: absolute;
+      top: 80px;
+      left: 30px;
+    }
+    #go-back-btn:hover {
+      transform: scale(1.2);
+      text-decoration: underline;
+    }
+    .neighbour-country-links {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .country-link {
+      text-decoration: none;
+      width: 50px;
+      color: black;
+      padding: 5px;
+      background-color: white;
+      border-radius: 4px;
+      border: 2px solid lightgrey;
+      text-align: center;
+      margin-right: 5px;
+    }
+
+    .country-link:hover {
+      text-decoration: underline;
+      color: black;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .country-sub-information {
+        row-gap: 20px;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .country-info-container h1 {
+        padding-bottom: 20px;
+      }
+    }
+    @media screen and (max-width: 790px) {
+      .country-info-container h1 {
+        padding-bottom: 50px;
+      }
+      .country-sub-information {
+        row-gap: 50px;
+      }
+      .country-flag-container,
+      .country-info-container {
+        align-items: flex-start;
+      }
+      .country-flag-container {
+        margin-top: 200px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      #country-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .country-flag-container {
+        margin: 100px auto;
+      }
+      .country-info-container h1 {
+        position: absolute;
+        top: 80px;
+        right: 140px;
+      }
+      .country-sub-information {
+        margin: 0 auto;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <i class="fas fa-globe-europe fa-2x"></i>
+      <h2>Know Your Countries</h2>
+    </header>
+    <section id="country-container">
+      <div class="country-flag-container">
+        <button id="go-back-btn" onclick="window.history.back()">
+          Go Back
+        </button>
+        <img src="<%= flag %>" alt="Country Flag" class="country-flag" />
+      </div>
+      <div class="country-info-container">
+        <h1><%= CountryName %></h1>
+        <div class="country-sub-information">
+          <div class="sub-information-row">
+            <div class="sub-information-1">
+              <p><b>Capital</b> : <%= capital %></p>
+              <p><b>Population</b> : <%= population %></p>
+              <p><b>Region</b> : <%= region %></p>
+              <p><b>Subregion</b> : <%= subregion %></p>
+              <p><b>Timezone</b> : <%= timezones %></p>
+            </div>
+            <div class="sub-information-2">
+              <p><b>Currency Name</b> : <%= CurrencyName %></p>
+              <p><b> Currency Code (Symbol)</b> : <%= code %>(<%= symbol %>)</p>
+
+              <span>
+                <b>Languages</b> :
+                <ul>
+                  <% languages.forEach( (language)=>{%>
+                  <li><%=language.name %></li>
+
+                  <%}) %>
+                </ul>
+              </span>
+            </div>
+          </div>
+
+          <div class="neighbour-country-links">
+            <b>Bordering Nations</b> : <% for (var i = 0; i < borders.length;
+            i++) {%>
+            <a class="country-link" href="/countries/<%= borders[i] %>"
+              ><%=borders[i] %></a
+            >
+
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../public/js/home.js"></script>
+  </body>
+</html>
